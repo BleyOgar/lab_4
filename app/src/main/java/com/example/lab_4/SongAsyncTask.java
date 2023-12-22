@@ -4,18 +4,12 @@ import android.os.AsyncTask;
 
 import com.example.lab_4.service.CommonService;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import cz.msebera.android.httpclient.HttpEntity;
-import cz.msebera.android.httpclient.NameValuePair;
-import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
 import cz.msebera.android.httpclient.client.methods.CloseableHttpResponse;
 import cz.msebera.android.httpclient.client.methods.HttpPost;
 import cz.msebera.android.httpclient.impl.client.CloseableHttpClient;
 import cz.msebera.android.httpclient.impl.client.HttpClients;
 import cz.msebera.android.httpclient.impl.client.LaxRedirectStrategy;
-import cz.msebera.android.httpclient.message.BasicNameValuePair;
 import cz.msebera.android.httpclient.util.EntityUtils;
 
 public class SongAsyncTask extends AsyncTask<String, String, String> {
@@ -42,10 +36,6 @@ public class SongAsyncTask extends AsyncTask<String, String, String> {
         try {
             CloseableHttpClient client = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
             HttpPost request = new HttpPost(url);
-            List<NameValuePair> pairs = new ArrayList<>();
-            pairs.add(new BasicNameValuePair("login", "4707login"));
-            pairs.add(new BasicNameValuePair("password", "4707pass"));
-            request.setEntity(new UrlEncodedFormEntity(pairs));
 
             CloseableHttpResponse response = client.execute(request);
             if (response.getStatusLine().getStatusCode() == 200) {
