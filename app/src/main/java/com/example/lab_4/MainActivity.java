@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity implements SongAsyncTask.Res
         if (CommonService.checkInternet(this)) {
             Service.getInstance().startPolling(this);
         } else {
-            binding.toolbar.setSubtitle("Авт]ономный режим");
+            binding.toolbar.setSubtitle("Автономный режим");
+            binding.idLoading.setVisibility(View.GONE);
             CommonService.getInstance().showToast("Автономный режим. Только просмотр.");
         }
     }
